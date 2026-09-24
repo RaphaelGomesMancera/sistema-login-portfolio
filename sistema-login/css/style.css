@@ -1,0 +1,95 @@
+:root{
+  --ink:#0F1B17; --ink-2:#1B2D26; --paper:#EDE7DB; --paper-2:#FFFFFF;
+  --acc:#C9622E; --acc-dim:#A84F23; --line:#2C4038; --err:#B3392C;
+  --ok:#3F7D5C; --weak:#C9622E; --mid:#C99A2E; --strong:#3F7D5C;
+  --text-on-ink:#F1EEE4; --text-muted:#8FA79B; --text-main:#1C241F;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --paper:#141F1B; --paper-2:#1B2925; --text-muted:#6F8579; --text-main:#EDE9DD; }
+}
+:root[data-theme="dark"]{ --paper:#141F1B; --paper-2:#1B2925; --text-muted:#6F8579; --text-main:#EDE9DD; }
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;}
+body{
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--text-main);
+  display:flex; align-items:center; justify-content:center;
+  min-height:100%;
+  padding:24px;
+}
+.shell{
+  width:100%; max-width:920px; min-height:560px;
+  display:grid; grid-template-columns:1fr 1fr;
+  background:var(--paper-2);
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(23,25,53,0.35);
+}
+.brand{
+  background:var(--ink);
+  color:var(--text-on-ink);
+  padding:56px 44px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  position:relative;
+}
+.brand h1{
+  font-family:'Fraunces',serif;
+  font-size:2.6rem; font-weight:600; line-height:1.05; margin:0 0 18px;
+}
+.brand p{ color:var(--text-muted); line-height:1.6; max-width:30ch; font-size:0.95rem; }
+.brand .mark{
+  width:38px; height:38px; border-radius:50%;
+  background:var(--acc); margin-bottom:32px;
+}
+.brand .foot{ font-size:0.8rem; color:var(--text-muted); }
+.panel{ padding:56px 44px; display:flex; flex-direction:column; }
+.tabs{ display:flex; gap:28px; margin-bottom:34px; border-bottom:1px solid #DAD5C6; }
+.tab{
+  background:none; border:none; padding:0 0 14px; font:inherit; font-size:0.95rem;
+  color:#7C8C82; cursor:pointer; border-bottom:2px solid transparent; font-weight:500;
+}
+.tab.active{ color:var(--ink); border-bottom-color:var(--acc); }
+form{ display:flex; flex-direction:column; gap:16px; }
+form.hidden{ display:none; }
+label{ font-size:0.82rem; color:#59685E; font-weight:500; }
+input{
+  width:100%; padding:12px 14px; margin-top:6px;
+  border:1px solid #D2CCBB; border-radius:3px; font:inherit; font-size:0.95rem;
+  background:var(--paper-2); color:var(--text-main);
+}
+input:focus{ outline:2px solid var(--acc); outline-offset:1px; border-color:var(--acc); }
+button.primary{
+  margin-top:8px; padding:13px; border:none; border-radius:3px;
+  background:var(--ink); color:#fff; font:inherit; font-weight:600; font-size:0.95rem;
+  cursor:pointer;
+}
+button.primary:hover{ background:var(--ink-2); }
+.msg{ min-height:20px; font-size:0.85rem; margin-top:2px; }
+.msg.err{ color:var(--err); }
+.msg.ok{ color:var(--ok); }
+.field{ position:relative; }
+.field input{ padding-right:44px; }
+.toggle-eye{
+  position:absolute; right:12px; top:34px; background:none; border:none;
+  cursor:pointer; padding:2px; color:#7C8C82; font-size:0.78rem; font-weight:600;
+}
+.strength{ display:flex; gap:4px; margin-top:8px; }
+.strength i{ flex:1; height:3px; border-radius:2px; background:#DAD5C6; }
+.strength-label{ font-size:0.76rem; color:#7C8C82; margin-top:5px; }
+.hint{ font-size:0.82rem; color:#7A8090; margin-top:18px; }
+.hint button{ background:none;border:none;color:var(--acc-dim);font:inherit;font-weight:600;cursor:pointer;padding:0; }
+.dash{ display:flex; flex-direction:column; align-items:flex-start; justify-content:center; height:100%; gap:14px; }
+.dash h2{ font-family:'Fraunces',serif; font-size:1.9rem; margin:0; }
+.dash p{ color:#59685E; margin:0; line-height:1.5; }
+.dash button{
+  margin-top:10px; padding:11px 22px; border:1px solid var(--ink); background:none;
+  color:var(--ink); border-radius:3px; font:inherit; font-weight:600; cursor:pointer;
+}
+.dash button:hover{ background:var(--ink); color:#fff; }
+@media (max-width:720px){
+  .shell{ grid-template-columns:1fr; }
+  .brand{ padding:40px 28px; }
+  .panel{ padding:40px 28px; }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Acesso — Sistema de Autenticação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <div class="brand">
+    <div>
+      <div class="mark"></div>
+      <h1>Acesso seguro,<br>sem fricção.</h1>
+      <p>Um fluxo completo de cadastro, login e sessão — construído do zero em HTML, CSS e JavaScript puro.</p>
+    </div>
+    <div class="foot">Dados salvos apenas neste navegador, para fins de demonstração.</div>
+  </div>
+
+  <div class="panel" id="authPanel">
+    <div class="tabs">
+      <button class="tab active" data-tab="login">Entrar</button>
+      <button class="tab" data-tab="cadastro">Criar conta</button>
+    </div>
+
+    <form id="loginForm">
+      <div>
+        <label for="loginEmail">E-mail</label>
+        <input id="loginEmail" type="email" required placeholder="voce@email.com">
+      </div>
+      <div class="field">
+        <label for="loginSenha">Senha</label>
+        <input id="loginSenha" type="password" required placeholder="••••••••">
+        <button type="button" class="toggle-eye" data-target="loginSenha">mostrar</button>
+      </div>
+      <div class="msg" id="loginMsg"></div>
+      <button class="primary" type="submit">Entrar</button>
+    </form>
+
+    <form id="cadastroForm" class="hidden">
+      <div>
+        <label for="cadNome">Nome</label>
+        <input id="cadNome" type="text" required placeholder="Seu nome">
+      </div>
+      <div>
+        <label for="cadEmail">E-mail</label>
+        <input id="cadEmail" type="email" required placeholder="voce@email.com">
+      </div>
+      <div class="field">
+        <label for="cadSenha">Senha</label>
+        <input id="cadSenha" type="password" required minlength="6" placeholder="mínimo 6 caracteres">
+        <button type="button" class="toggle-eye" data-target="cadSenha">mostrar</button>
+        <div class="strength" id="strengthBars"><i></i><i></i><i></i><i></i></div>
+        <div class="strength-label" id="strengthLabel">&nbsp;</div>
+      </div>
+      <div class="msg" id="cadMsg"></div>
+      <button class="primary" type="submit">Criar conta</button>
+    </form>
+
+    <div class="hint" id="hint">Ainda não tem conta? <button id="hintSwitch">Criar uma agora</button></div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
